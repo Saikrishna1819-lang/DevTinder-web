@@ -22,7 +22,7 @@ const Body = () => {
 
 
     }catch(err){
-     if(err.status===401)
+     if(err.response&&err.response.status===401)
      {
        navigate("/login")
      }
@@ -38,11 +38,11 @@ const Body = () => {
  
 
   return (
-    <>
+    <div>
     <Navbar/>
     <Outlet/>
     <Footer/>
-    </>
+    </div>
   )
 }
 

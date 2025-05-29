@@ -11,6 +11,7 @@ const Login = () => {
 
     const dispatch=useDispatch();
     const [email,setEmail]=useState("krishnasai69219@gmail.com");
+    const [error,setError]=useState("");
     console.log(email);
     const [password,setPassword]=useState("Sai@181911")
     const handleLogin=async()=>{
@@ -25,7 +26,11 @@ const Login = () => {
 
         }
         catch(err){ 
-            console.error(err);
+            setError(err.response.data?.message||"Something went wrong");
+       
+    
+  
+            
         }
         
 
@@ -39,6 +44,7 @@ const Login = () => {
             <input type="email" value={email} className='px-3 py-3 rounded-md shadow-2xl bg-base-100' onChange={(e)=>setEmail(e.target.value)}></input>
              <label className='block text-gray-400'>Password</label>
             <input type="password" value={password} className='px-6 py-3 mb-1 rounded-md shadow-2xl bg-base-100' onChange={(e)=>setPassword(e.target.value)}></input>
+            <p className='text-red-500 mb-1'>{error}</p>
             <button onClick={handleLogin} className='bg-blue-500 hover:bg-blue-600 text-lg font-semibold px-4 py-2 rounded-md w-full block'>login</button>
             
         </div>
