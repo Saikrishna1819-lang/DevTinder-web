@@ -18,8 +18,16 @@ const Connections = () => {
     useEffect(()=>{
         fetchConnections();
     },[])
-    if(!showConnections) return 
-    if(showConnections.length==0) return <h1>No connections found</h1>
+    if(!showConnections) return (
+        <div>
+            <h1 className='text-2xl font-bold text-center mt-20' >Loading.......</h1>
+        </div>
+    )
+    if(showConnections.length==0) return (
+        <div>
+            <h1 className='text-2xl font-bold text-center mt-20' >No Connections  Found</h1>
+        </div>
+    )
   return (
     <div className='w-full h-screen flex justify-center mt-20'>
         <div className='w-6/12'>
