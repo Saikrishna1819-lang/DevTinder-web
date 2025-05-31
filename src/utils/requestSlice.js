@@ -9,8 +9,10 @@ const requestSlice=createSlice({
             return action.payload;
         },
         removeConnectionRequest:(state,action)=>{
-             const newArray=state.filter((req)=> req._id!==action.payload);
-             return newArray;
+           
+             if(!state) return state;
+            const newArray=state.filter((req)=> req._id!==action.payload)
+            return newArray;
         },
 
     }

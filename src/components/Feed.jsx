@@ -24,7 +24,16 @@ const Feed=()=>{
     useEffect(()=>{
         getFeed();
     },[])
-    {feed&&console.log(feed[0]);}
+   if(!feed) return (
+    <div>
+            <h1 className='text-2xl font-bold text-center mt-20' >Loading ....</h1>
+    </div>
+   )
+   if(feed.length==0) return (
+    <div>
+            <h1 className='text-2xl font-bold text-center mt-20' >Feed is empty</h1>
+        </div>
+   )
 
     return feed&&(
        <div className="flex justify-center mt-10">

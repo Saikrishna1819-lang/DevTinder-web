@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { removeUser } from '../utils/userSlice';
+import { removeTotalFeed } from '../utils/feedSlice';
 
 const Navbar = () => {
    const dispatch=useDispatch();
@@ -12,7 +13,9 @@ const Navbar = () => {
    
     try{
           await axios.post(BASE_URL+"/logout",{},{withCredentials:true})
+          dispatch(removeTotalFeed());
           dispatch(removeUser());
+         
           navigate("/login");
           
     }catch(err){
@@ -26,7 +29,7 @@ const Navbar = () => {
   
    <div className="navbar bg-base-300 shadow-sm">
   <div className="flex-1">
-    <Link className="btn btn-ghost text-xl">DevTinder</Link>
+    <Link to="/" className="btn btn-ghost text-xl">DevTinder</Link>
   </div>
   {user&&
    <div className="flex gap-2 items-center">

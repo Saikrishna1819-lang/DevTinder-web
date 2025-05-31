@@ -10,10 +10,10 @@ const ProfileEdit = ({user}) => {
     
     const [firstName,setFirstName]=useState(user.firstName);
     const [lastName,setLastName]=useState(user.lastName);
-    const [age,setAge]=useState(user.age);
-    const [gender,setGender]=useState(user.gender);
-    const [about,setAbout]=useState(user.about);
-    const [photourl,setPhotourl]=useState(user.photourl);
+    const [age,setAge]=useState(user.age||"");
+    const [gender,setGender]=useState(user.gender||"");
+    const [about,setAbout]=useState(user.about||"");
+    const [photourl,setPhotourl]=useState(user.photourl||"");
      const [error,setError]=useState("");
      const [showStatus,setShowStatus]=useState(false)
     
