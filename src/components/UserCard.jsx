@@ -4,7 +4,7 @@ const UserCard = ({user}) => {
     const {firstName,lastName,age,gender,about,photourl}=user
     
     
-  return (
+  return user&& (
      <div className="bg-base-300 w-[230px]  rounded-lg">
             <div className="w-full">
                 <img className="w-full  rounded-t-lg" src={photourl}  alt="profile-photo"></img>
