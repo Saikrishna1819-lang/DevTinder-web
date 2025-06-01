@@ -12,7 +12,7 @@ const Feed=()=>{
     const getFeed=async()=>{
         if(feed) return 
          try {
-    const res = await axios.get(BASE_URL, {
+    const res = await axios.get(BASE_URL+"/feed", {
       withCredentials: true,
     });
     console.log("Response:", res);
