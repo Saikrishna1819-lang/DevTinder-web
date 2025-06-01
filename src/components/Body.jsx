@@ -12,8 +12,7 @@ const Body = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
   const fetchUser=async()=>{
-    if(userData){
-      return 
+    if (userData && Object.keys(userData).length > 0) return;
     }
     try{
 
