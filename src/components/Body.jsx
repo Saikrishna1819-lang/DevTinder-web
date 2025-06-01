@@ -32,7 +32,12 @@ const Body = () => {
 
  
    useEffect(()=>{
-    fetchUser();
+    if(userData)
+    {
+      fetchUser();
+    }
+
+     
 
   },[])
  
