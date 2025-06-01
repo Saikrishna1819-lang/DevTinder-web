@@ -6,6 +6,7 @@ import { addFeed } from "../utils/feedSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Feed=()=>{
+  const user=useSelector(store=> store.user);
     
    const dispatch=useDispatch();
    const feed=useSelector(state=> state.feed);
@@ -23,7 +24,9 @@ const Feed=()=>{
   }
     }
     useEffect(()=>{
-        getFeed();
+        if(user){
+          getFeed();
+        }
     },[])
    if(!feed) return (
     <div>
