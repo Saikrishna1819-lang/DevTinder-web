@@ -40,7 +40,7 @@ const Connections = () => {
                 </div>
                 <div>
                     <div className='text-xl font-semibold '>{connection.firstName+" "+connection.lastName}</div>
-                    <div className='text-gray-300'>{connection.age+" , "+connection.gender}</div>
+                    <div className='text-gray-300'>{connection.age?connection.age:""+" , "+connection.gender?connection.gender:""}</div>
                     <div className='text-gray-200'>{connection.about}</div>
 
                 </div>
