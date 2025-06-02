@@ -13,7 +13,7 @@ const ProfileEdit = ({user}) => {
     const [age,setAge]=useState(user.age||"");
     const [gender,setGender]=useState(user.gender||"");
     const [about,setAbout]=useState(user.about||"");
-    const [photourl,setPhotourl]=useState(user.photourl||"");
+    const [photourl,setPhotourl]=useState(user.photourl||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhYaQUXZv9Fgs3YsocuEf1Vi4ydnXf7HLU9FY0liq7-NFo1nC7CIRw2jlAou1kICG5rk&usqp=CAU");
      const [error,setError]=useState("");
      const [showStatus,setShowStatus]=useState(false)
     
