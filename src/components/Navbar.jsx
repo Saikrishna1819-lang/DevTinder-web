@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src={user.photourl} />
+            src={user.photourl?user.photourl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhYaQUXZv9Fgs3YsocuEf1Vi4ydnXf7HLU9FY0liq7-NFo1nC7CIRw2jlAou1kICG5rk&usqp=CAU"} />
         </div>
       </div>
       <ul
