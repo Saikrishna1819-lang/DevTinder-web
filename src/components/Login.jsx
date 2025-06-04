@@ -1,13 +1,18 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 
 const Login = () => {
-    
+    const user=useSelector(store=> store.user);
     const navigate=useNavigate();
+    if(user){
+        navigate("/")
+    }
+    
+   
 
     const dispatch=useDispatch();
     const [isLogin,setIsLogin]=useState(true);
@@ -54,6 +59,7 @@ const Login = () => {
         
 
     }
+    // if(user) return
   return (
     <div className='flex w-full  justify-center mt-10' >
    

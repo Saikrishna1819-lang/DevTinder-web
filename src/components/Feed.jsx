@@ -27,7 +27,7 @@ const Feed=()=>{
         if(user){
           getFeed();
         }
-    },[])
+    },[user])
    if(!feed) return (
     <div>
             <h1 className='text-2xl font-bold text-center mt-20' >Loading ....</h1>
