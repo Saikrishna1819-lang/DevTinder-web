@@ -22,7 +22,7 @@ function App() {
 
             {/* Protected / Authenticated Routes inside Body Layout */}
             <Route path="/" element={<Body />}>
-             <Route path="/login" element={<Login />} />
+             <Route path="login" element={<Login />} />
               <Route path="feed" element={<Feed />} />
               <Route path="connections" element={<Connections />} />
               <Route path="requests" element={<Requests />} />
