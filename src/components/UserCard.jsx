@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { removeFeed } from '../utils/feedSlice'
 
 const UserCard = ({user}) => {
+  console.log(user)
     const dispatch=useDispatch();
 
     const handleFeed=async(status,userid)=>{
@@ -25,27 +26,52 @@ const UserCard = ({user}) => {
     }
     
     if(!user) return 
-   const {firstName,lastName,age,gender,about,photourl}=user;
+   const {firstName,lastName,age,gender,about,photourl,skills}=user;
+
+ 
   return  (
-    
-     <div className="bg-base-300 w-[230px]  rounded-lg">
-            <div className="w-full">
-                <img className="w-full  rounded-t-lg" src={photourl}  alt="profile-photo"></img>
-            </div>
-            <div className="p-5 flex flex-col gap-2 w-full">
-                <div className="font-medium text-lg break-words">{firstName+" "+lastName}</div>
-                <div>
-                    <div>{age}</div>
-                    <div>{gender}</div>
-                </div>
-                <div className='break-words'>{about}</div>
-                
-                <div className="flex gap-5">
-                    <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded" onClick={()=> handleFeed("ignored",user._id)}>Ignore</button>
-                    <button className="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded" onClick={()=> handleFeed("interested",user._id)}>Interested</button>
-                </div>
-            </div>
+
+
+     <div className="w-[320px]  bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg transition-transform transform hover:scale-[1.03] duration-300 hover:shadow-2xl border border-gray-700">
+      <img
+        className="w-full h-64 object-cover"
+        src={photourl}
+        alt="profile"
+      />
+      <div className="p-4 flex flex-col gap-3 text-white">
+        <h2 className="text-2xl font-bold">{firstName} {lastName}</h2>
+        <div className="flex gap-3 text-sm text-gray-300">
+         {gender&& <span className="bg-gray-700 px-2 py-1 rounded-full">{gender}</span>}
+          {age&&<span className="bg-gray-700 px-2 py-1 rounded-full">{age} years</span>}
         </div>
+       {about&& <p className="text-gray-400 text-sm line-clamp-3">{about}</p>}
+        {skills.length>0&&<div className='text-lg font-semibold'>Skills</div>}
+       {skills.length>0&&<div className='flex flex-wrap gap-3 '>
+       
+        {skills.map((skill)=>{
+          return <div className="px-3 py-1 rounded-full border  border-designColor">{skill}</div>
+        })}
+        </div>
+        }
+
+        <div className="flex gap-4 pt-2">
+          <button
+            onClick={() => handleFeed("ignored", user._id)}
+            className="w-full bg-gray-700 hover:bg-gray-800 text-white py-2 rounded-xl transition-colors duration-200"
+          >
+            Ignore
+          </button>
+          <button
+            onClick={() => handleFeed("interested", user._id)}
+            className="w-full bg-designColor hover:bg-pink-700 text-white py-2 rounded-xl transition-colors duration-200"
+          >
+            Interested
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    
   )
 }
 

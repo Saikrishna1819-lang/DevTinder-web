@@ -4,6 +4,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import { BASE_URL } from "../utils/constants";
+import Spinner from "./Spinner";
+
+import React from 'react';
+
+
+
+
 
 const Feed=()=>{
   const user=useSelector(store=> store.user);
@@ -16,7 +23,7 @@ const Feed=()=>{
     const res = await axios.get(BASE_URL+"/feed", {
       withCredentials: true,
     });
-    console.log("Response:", res);
+    
     dispatch(addFeed(res.data?.users));
 
   } catch (err) {
@@ -29,18 +36,20 @@ const Feed=()=>{
         }
     },[user])
    if(!feed) return (
-    <div>
-            <h1 className='text-2xl font-bold text-center mt-20' >Loading ....</h1>
-    </div>
+    <>
+    <Spinner/>
+    
+    </>
+            
    )
    if(feed.length==0) return (
     <div>
-            <h1 className='text-2xl font-bold text-center mt-20' >Feed is empty</h1>
+            <h1 className='text-2xl md:text-3xl lg:text-4xl text-white font-bold text-center mt-20' >Feed is empty</h1>
         </div>
    )
 
     return feed&&(
-       <div className="flex justify-center mt-10">
+       <div className="flex justify-center pt-20">
         <UserCard user={feed[0]}/>
        </div>
     )

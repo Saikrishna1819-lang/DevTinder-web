@@ -11,7 +11,7 @@ const Chat = () => {
     const userId=user?._id;
     const[messages,setMessages]=useState([]);
     const [newMessage,setNewMessage]=useState("");
-    console.log(newMessage);
+    
 
     const sendMessage=()=>{
         if(newMessage.trim()==="") return 
@@ -30,7 +30,7 @@ const Chat = () => {
 
     const fetchChatMessages=async()=>{
         const chat=await axios.get(BASE_URL+"/chat/"+targetUserId,{withCredentials:true});
-        console.log(chat.data.messages);
+        
 
         const chatMessages=chat?.data?.messages.map((msg)=>{
             const {senderId,text}=msg;
@@ -52,7 +52,7 @@ const Chat = () => {
         const socket=createSocketConnection();
         socket.emit("joinChat",{userId,targetUserId})
         socket.on("messageReceived",({firstName,text})=>{
-            console.log(firstName+":  "+text)
+           
             setMessages((message)=> [...message,{firstName,text}])
         })
 
@@ -70,12 +70,12 @@ const Chat = () => {
 
 
   return (
-    <div className='flex flex-col h-[80vh]  w-2/3 mx-auto p-4 bg-gray-100 mt-10 text-black'>
+    <div className='flex flex-col h-[100vh]  md:h-[80vh]   w-full sm:w-[500px] md:w-[800px] mx-auto p-4 bg-gray-900 text-white md:mt-10   px-10 py-5'>
         <div className='text-xl text-center font-semibold mb-4'>
             Chat
              
         </div>
-        <div className='flex-1 overflow-y-auto bg-white rounded-lg shadow'>
+        <div className='flex-1 overflow-y-auto bg-gray-300 rounded-lg shadow'>
             {messages.map((message,index)=>{
                 const isMyMessage=message.firstName===user.firstName;
                 return (
@@ -85,7 +85,7 @@ const Chat = () => {
                                 <div className='text-sm  mb-1 pr-1'>{message.firstName}</div>
                             )}
 
-                            <div className={`inline-block rounded-xl px-4 py-2 ${isMyMessage? 'bg-green-500 text-white':'bg-blue-500 text-white'}`}>{message.text}</div>
+                            <div className={`inline-block text-lg font-semibold rounded-xl px-4 py-1 ${isMyMessage? 'bg-designColor text-white':'bg-blue-500 text-white'}`}>{message.text}</div>
                         </div>
                     </div>
                 )

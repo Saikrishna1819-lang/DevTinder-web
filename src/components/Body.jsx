@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Footer from './Footer'
@@ -6,9 +6,16 @@ import { BASE_URL } from '../utils/constants'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userSlice'
+import SideBar from './SideBar'
 
 const Body = () => {
   const userData=useSelector(store=> store.user);
+  const[showSideBar,SetShowSideBar]=useState(false)
+
+  const handleSideBar=()=>{
+    SetShowSideBar(prev=> !prev)
+  }
+
   const dispatch=useDispatch();
   const navigate=useNavigate();
   const fetchUser=async()=>{
@@ -41,10 +48,11 @@ const Body = () => {
  
 
   return (
-    <div>
-    <Navbar/>
+    <div className='w-full min-h-screen  relative  opacity-95'>
+    <Navbar show={handleSideBar} />
+   {showSideBar&& <SideBar show={handleSideBar} />}
     <Outlet/>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   )
 }

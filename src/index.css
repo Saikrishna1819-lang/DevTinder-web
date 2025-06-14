@@ -1,5 +1,16 @@
 @import "tailwindcss";
- @plugin "daisyui" {
-   themes: light , dark --default ;
- }
+@theme{
+    --color-primary:#063970;
+    --color-designColor:#ff014f;
+    --color-boxBg:#1e1e1e;
+    --color-bodyColor: #212428;
+    --color-lightText: #c4c4c4de;
+}
+ 
 
+html,
+body,
+#root {
+  height: 100%;
+  
+}
