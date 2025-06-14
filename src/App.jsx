@@ -17,13 +17,12 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* Public Routes */}
-            {/* <Route path="/" element={<LandingPage />} /> */}
+            <Route path="/" element={<LandingPage />} />
             {/* <Route path="/login" element={<Login />} /> */}
+
             {/* Protected / Authenticated Routes inside Body Layout */}
             <Route path="/" element={<Body />}>
-              <Route index element={<LandingPage />} />
-              <Route path="login" element={<Login />} />
-              <Route path="test" element={<>Hey there!!!</>} />
+             <Route path="/login" element={<Login />} />
               <Route path="feed" element={<Feed />} />
               <Route path="connections" element={<Connections />} />
               <Route path="requests" element={<Requests />} />
